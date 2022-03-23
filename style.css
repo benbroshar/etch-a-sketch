@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-    background-color: lightgrey;
+    background-color: #f0f0f0;
     display: flex;
     font-family: Roboto, sans-serif;
     justify-content: center;
@@ -28,4 +28,42 @@ h1{
     align-items: center;
     justify-content: center;
     flex-wrap:wrap;
+    border:2px solid black;
+}
+
+#content-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#button-container {
+    display:flex;
+    justify-content: space-around;
+    margin-top:20px;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+button {
+    padding:10px;
+    border-radius: 8px;
+    border-color:black;
+    background-color: inherit;
+    font-family: Roboto,sans-serif;
+    font-weight: bold;
+    font-size:18px;
+    width:125px;
+    margin-left:10px;
+    margin-right:10px;
+    transition:all 0.07s
+}
+
+.chosen {
+    background-color: black;
+    color:white;
+}
+
+.moused-over{
+    transform: scale(1.2);
 }
