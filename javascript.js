@@ -13,6 +13,7 @@ window.onload = () => {
 
 const regButtonManager = document.querySelector(".reg-button");
 const rainbowButtonManager = document.querySelector(".rainbow-button");
+const eraseButtonManager = document.querySelector(".erase-button");
 const clearButtonManager = document.querySelector(".clear-button");
 const gridButtonManager = document.querySelector(".grid-button");
 
@@ -25,6 +26,11 @@ rainbowButtonManager.addEventListener("mouseover",lightup);
 rainbowButtonManager.addEventListener("mouseout",revert);
 rainbowButtonManager.addEventListener("click",clicked);
 rainbowButtonManager.addEventListener("click",() => mode = "rainbow");
+
+eraseButtonManager.addEventListener("mouseover",lightup);
+eraseButtonManager.addEventListener("mouseout",revert);
+eraseButtonManager.addEventListener("click",clicked);
+eraseButtonManager.addEventListener("click",() => mode = "erase");
 
 clearButtonManager.addEventListener("mouseover",lightup);
 clearButtonManager.addEventListener("mouseout",revert);
@@ -43,7 +49,7 @@ function revert(e){
 }
 
 function clicked(e){
-    [regButtonManager,rainbowButtonManager,clearButtonManager,gridButtonManager].forEach(element => element.classList.remove("chosen"));
+    [regButtonManager,rainbowButtonManager,eraseButtonManager,clearButtonManager,gridButtonManager].forEach(element => element.classList.remove("chosen"));
     e.target.classList.add("chosen");
 }
 
@@ -92,7 +98,9 @@ function sketch(e){ //when mouseover event fires, check if mousedown
         const B = Math.floor(Math.random() * 256)
         e.target.style.backgroundColor = `rgb(${R}, ${G}, ${B})`
     }else if(mode === 'black'){
-        e.target.style.backgroundColor = `${colorSelected}`;
+        e.target.style.backgroundColor = "black";
+    }else if(mode === 'erase'){
+        e.target.style.backgroundColor = "white"
     }
 
 };
@@ -103,7 +111,9 @@ function sketchClick(e){ //when mouseover event fires, check if mousedown
         const B = Math.floor(Math.random() * 256)
         e.target.style.backgroundColor = `rgb(${R}, ${G}, ${B})`
     }else if(mode === 'black'){
-        e.target.style.backgroundColor = `${colorSelected}`;
+        e.target.style.backgroundColor = `black`;
+    }else if(mode === "erase"){
+        e.target.style.backgroundColor = 'white'
     }
    
 
