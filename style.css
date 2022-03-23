@@ -56,7 +56,8 @@ button {
     width:125px;
     margin-left:10px;
     margin-right:10px;
-    transition:all 0.07s
+    transition:all 0.07s;
+    cursor: pointer;
 }
 
 .chosen {
