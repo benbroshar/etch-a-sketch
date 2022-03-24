@@ -10,6 +10,17 @@ window.onload = () => {
     startbutton.classList.add("chosen")
 }
 
+let mouseDown = false
+document.body.onmousedown = mouseDownFunc
+document.body.onmouseup = mouseUpFunc
+
+function mouseDownFunc(){
+    mouseDown = true;
+};
+
+function mouseUpFunc(){
+    mouseDown = false;
+};
 
 const regButtonManager = document.querySelector(".reg-button");
 const rainbowButtonManager = document.querySelector(".rainbow-button");
@@ -17,27 +28,22 @@ const eraseButtonManager = document.querySelector(".erase-button");
 const clearButtonManager = document.querySelector(".clear-button");
 const gridButtonManager = document.querySelector(".grid-button");
 
-regButtonManager.addEventListener("mouseover",lightup);
-regButtonManager.addEventListener("mouseout",revert);
+const buttonArray = [regButtonManager,rainbowButtonManager,eraseButtonManager,clearButtonManager,gridButtonManager];
+
+buttonArray.forEach(element => element.addEventListener("mouseover",lightup));
+buttonArray.forEach(element => element.addEventListener("mouseout",revert));
+
 regButtonManager.addEventListener("click",clicked);
 regButtonManager.addEventListener("click",() => mode = "black");
 
-rainbowButtonManager.addEventListener("mouseover",lightup);
-rainbowButtonManager.addEventListener("mouseout",revert);
 rainbowButtonManager.addEventListener("click",clicked);
 rainbowButtonManager.addEventListener("click",() => mode = "rainbow");
 
-eraseButtonManager.addEventListener("mouseover",lightup);
-eraseButtonManager.addEventListener("mouseout",revert);
 eraseButtonManager.addEventListener("click",clicked);
 eraseButtonManager.addEventListener("click",() => mode = "erase");
 
-clearButtonManager.addEventListener("mouseover",lightup);
-clearButtonManager.addEventListener("mouseout",revert);
 clearButtonManager.addEventListener("click",erase);
 
-gridButtonManager.addEventListener("mouseover",lightup);
-gridButtonManager.addEventListener("mouseout",revert);
 gridButtonManager.addEventListener("click",gridSelector);
 
 function lightup(e){
@@ -62,26 +68,6 @@ function erase(){
 function gridSelector(){
     const userSize = window.prompt("Enter the desired grid size. Grid will be a square with entered length per side. Max size is 64.");
     makeGrid(userSize);
-}
-
-let mouseDown = false
-document.body.onmousedown = mouseDownFunc
-document.body.onmouseup = mouseUpFunc
-
-function mouseDownFunc(){
-    mouseDown = true;
-};
-
-function mouseUpFunc(){
-    mouseDown = false;
-};
-
-function randomRGB() {
-    R = Math.floor(Math.random() * 255);
-    G = Math.floor(Math.random() * 255);
-    B = Math.floor(Math.random() * 255);
-    let randColor = "rgb(" + R + "," + G + "," + B + ")";
-    return randColor
 }
 
 //mouseover event handling
